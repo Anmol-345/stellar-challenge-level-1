@@ -102,6 +102,11 @@ Transaction confirmation showing successful XLM transfer on the Stellar Testnet.
 
 ![Successful Transaction](./public/transaction.png)
 
+### Successful Testnet Transaction Proof
+Transaction confirmation showing successful XLM transfer on the Stellar Testnet.
+
+![Successful Transaction](./public/successful-transaction.png)
+
 ---
 
 # TRANSACTION PROOF
