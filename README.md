@@ -33,7 +33,7 @@ A modern, user-friendly web application for managing Stellar (XLM) assets with s
 
 ```bash
 # Clone the repository
-git clone https://github.com/Anmol-345/stellar-connect-wallet.git
+git clone https://github.com/Anmol-345/stellar-challenge-level-1.git
 cd stellar-connect-wallet
 
 # Install dependencies
