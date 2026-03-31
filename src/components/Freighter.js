@@ -47,13 +47,35 @@ const getBalance = async () =>{
     }
 }
 
-const userSignTransaction = async (xdr, network, signWith) => {
+const userSignTransaction = async (xdr, networkPassphrase, publicKey) => {
     try {
-        const result = await signTransaction(xdr,{
-            network,
-            accountToSign:signWith
+        console.log("Calling Freighter signTransaction with:", { networkPassphrase, publicKey });
+        const result = await signTransaction(xdr, {
+            networkPassphrase,
+            publicKey
         });
-        return result;
+        
+        console.log("Freighter signTransaction returned:", result);
+        
+        // Handle multiple possible response formats from Freighter
+        let signedXdr;
+        if (typeof result === 'string') {
+            // Response is already the XDR string
+            signedXdr = result;
+        } else if (result?.signedTxXdr && typeof result.signedTxXdr === 'string') {
+            // Response is { signedTxXdr: "..." }
+            signedXdr = result.signedTxXdr;
+        } else if (result?.xdr && typeof result.xdr === 'string') {
+            // Response is { xdr: "..." }
+            signedXdr = result.xdr;
+        } else {
+            // Unknown format - log it for debugging
+            console.error("Unknown Freighter response format:", result);
+            throw new Error("Unexpected response format from Freighter: " + JSON.stringify(result).substring(0, 100));
+        }
+        
+        console.log("Extracted signed XDR length:", signedXdr?.length, "first 50 chars:", signedXdr?.substring(0, 50));
+        return signedXdr;
     } catch (error) {
         console.error("userSignTransaction error:", error);
         throw new Error("Failed to sign transaction with Freighter: " + error.message);
