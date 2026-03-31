@@ -95,7 +95,7 @@ Initial screen showing "Stellar Dapp" title with Connect button.
 ### Wallet Connected with Balance Display
 Connected wallet showing address, balance (XLM amount), and action buttons for Send/History/Disconnect.
 
-![Wallet Connected](./public/wallet-connected.png)
+![Wallet Connected](./public/wallet-connect.png)
 
 ### Successful Testnet Transaction
 Transaction confirmation showing successful XLM transfer on the Stellar Testnet.
